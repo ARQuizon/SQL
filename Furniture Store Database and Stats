@@ -1,0 +1,23 @@
+CREATE TABLE home_furniture (
+    id INTEGER PRIMARY KEY,
+    item TEXT,
+    color TEXT,
+    quantity INTEGER,
+    price INTEGER
+    );
+
+INSERT INTO home_furniture VALUES
+    (1, "couch", "pink", 4, 200),
+    (2, "coffee table", "gold", 7, 50),
+    (3, "dining table", "white", 5, 50),
+    (4, "dining chairs", "pink", 20, 30),
+    (5, "bed frame", "white", 4, 75),
+    (6, "light fixture", "gold", 5, 60),
+    (7, "love seat", "pink", 7, 50);
+    
+SELECT * FROM home_furniture
+    ORDER BY price;
+    
+SELECT item, price FROM home_furniture
+    WHERE price <= 50
+    ORDER BY price;
