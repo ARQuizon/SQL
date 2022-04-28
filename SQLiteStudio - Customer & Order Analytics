@@ -10,6 +10,7 @@ SELECT COUNT(orderID) FROM BIT_DB.JanSales
 --#3-Select the customer account numbers for all the orders that were placed in February.
 SELECT customers.acctnum FROM BIT_DB.customers
     INNER JOIN BIT_DB.FebSales
+    ON customers.order_id = FebSales.orderID
     ;
 
 --#4-Which product was the cheapest one sold in January, and what was the price?
