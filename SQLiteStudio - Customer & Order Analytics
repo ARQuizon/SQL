@@ -13,8 +13,10 @@ SELECT customers.acctnum FROM BIT_DB.customers
     ;
 
 --#4-Which product was the cheapest one sold in January, and what was the price?
-SELECT distinct Product, Price FROM BIT_DB.JanSales
-    WHERE Price IN (SELECT MIN(Price) FROM BIT_DB.JanSales)
+SELECT distinct(Product), Price FROM BIT_DB.JanSales
+    GROUP BY Product
+    ORDER BY Price ASC
+    LIMIT 1
     ;
     
 --#5-What is the total revenue for each product sold in January? (Revenue can be calculated using the number of products sold and the price of the products).
