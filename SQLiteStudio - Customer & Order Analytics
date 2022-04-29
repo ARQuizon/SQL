@@ -70,4 +70,11 @@ SELECT SUM(FebSales.Quantity)/COUNT(customers.acctnum) AS avg_quantity FROM BIT_
     ON FebSales.orderID = customers.order_id
     ;
 
---#13-
+--#13-Which product brought in the most revenue in January and how much revenue did it bring in total?
+SELECT product, SUM(quantity*price) AS Revenue FROM BIT_DB.JanSales    
+    GROUP BY product
+    ORDER BY REVENUE DESC
+    LIMIT 1
+    ;
+
+
