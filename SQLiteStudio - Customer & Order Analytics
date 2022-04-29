@@ -58,4 +58,10 @@ SELECT product, SUM(quantity) AS quantity FROM BIT_DB.FebSales
     GROUP BY product
     ;
 
---#11-
+--#11-What was the average amount spent per account in February? (Hint: For this question, we want the average amount spent / number of accounts, not the amount spent by each account).
+SELECT SUM(FebSales.Quantity*FebSales.price)/COUNT(customers.acctnum) AS Avg_Amt_Spent FROM BIT_DB.FebSales
+    LEFT JOIN BIT_DB.customers
+    ON FebSales.orderID = customers.order_id
+    ;
+
+--#12-
