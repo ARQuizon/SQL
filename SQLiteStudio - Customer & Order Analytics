@@ -52,4 +52,10 @@ SELECT COUNT(distinct location) FROM BIT_DB.JanSales
     AND quantity > 1
     ;
 
---#10-
+--#10-How many of each type of headphone were sold in February?
+SELECT product, SUM(quantity) AS quantity FROM BIT_DB.FebSales
+    WHERE product LIKE '%headphone%'
+    GROUP BY product
+    ;
+
+--#11-
