@@ -46,4 +46,10 @@ SELECT product, SUM(quantity) FROM BIT_DB.FebSales
     GROUP BY product
     ;
 
+--#9-How many locations are there in New York that sold more than 1 product in January?
+SELECT COUNT(distinct location) FROM BIT_DB.JanSales
+    WHERE location LIKE '%NY%'
+    AND quantity > 1
+    ;
 
+--#10-
