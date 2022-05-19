@@ -89,6 +89,16 @@ SELECT t.Name AS 'Track Name', a.Title AS 'Album Name', m.Name AS 'Media Type', 
         ON t.genreid = g.genreid
     ;
 
-##13. 
-
+##13. Show the total sales made by each sales agent.
+SELECT e.FirstName, e.LastName, ROUND(SUM(i.total),2) AS 'Total Sales'
+    FROM chinook.employees e
+    JOIN chinook.customers c
+        ON e.EmployeeId = c.SupportRepId
+    JOIN chinook.invoices i
+        ON c.CustomerId = i.CustomerId
+    WHERE e.title = 'Sales Support Agent'
+    GROUP BY e.FirstName
+    ;
+    
+##14. 
 
