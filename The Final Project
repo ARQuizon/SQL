@@ -1,0 +1,53 @@
+
+
+##1. Show Customers (their full names, customer ID, and country) who are not in the US. (Hint: != or <> can be used to say "is not equal to").
+SELECT cust.FirstName, cust.LastName, cust.CustomerId, cust.Country
+    FROM chinook.customers cust
+    WHERE cust.country <> 'USA'
+    ;
+
+##2. Show only the Customers from Brazil.
+SELECT * FROM chinook.customers cust
+    WHERE cust.country = 'Brazil'
+    ;
+
+##3. Find the Invoices of customers who are from Brazil. 
+The resulting table should show the customer's full name, Invoice ID, Date of the invoice, and billing country.
+SELECT cust.firstname, cust.lastname, inv.invoiceid, inv.invoicedate, inv.billingcountry
+    FROM chinook.customers cust
+    JOIN chinook.invoices inv
+        ON cust.customerid = inv.customerid
+    WHERE cust.country = 'Brazil'
+    ;
+
+##4. Show the Employees who are Sales Agents.
+SELECT *
+    FROM chinook.employees emp
+    WHERE emp.title = 'Sales Support Agent'
+    ;
+
+##5. Find a unique/distinct list of billing countries from the Invoice table.
+SELECT DISTINCT(inv.BillingCountry)
+    FROM chinook.invoices inv
+    ;
+
+##6. Provide a query that shows the invoices associated with each sales agent. The resulting table should include the Sales Agent's full name.
+SELECT inv.invoiceid, emp.FirstName, emp.LastName
+    FROM chinook.invoices inv
+    JOIN chinook.customers cust
+        ON inv.customerid = cust.customerid
+    JOIN chinook.employees emp
+        ON cust.supportrepid = emp.employeeid
+    WHERE emp.title = 'Sales Support Agent'
+    ;
+
+##7. Show the Invoice Total, Customer name, Country, and Sales Agent name for all invoices and customers.
+SELECT emp.FirstName, emp.LastName, cust.FirstName, cust.LastName, inv.BillingCountry, inv.Total
+    FROM chinook.employees emp
+    JOIN chinook.customers cust
+        ON emp.employeeid = cust.supportrepid
+    JOIN chinook.invoices inv
+        ON cust.customerid = inv.customerid
+    ;
+
+##8. 
