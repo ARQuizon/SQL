@@ -100,5 +100,17 @@ SELECT e.FirstName, e.LastName, ROUND(SUM(i.total),2) AS 'Total Sales'
     GROUP BY e.FirstName
     ;
     
-##14. 
+##14. Which sales agent made the most in sales in 2009?
+SELECT e.FirstName, e.LastName, ROUND(SUM(i.Total),2) AS 'Total Sales'
+    FROM chinook.employees e
+    JOIN chinook.customers c
+        ON e.EmployeeId = c.SupportRepId
+    JOIN chinook.invoices i
+        ON c.customerid = i.customerid
+    WHERE e.title = 'Sales Support Agent'    
+        AND i.invoicedate LIKE '%2009%'
+    GROUP BY e.FirstName
+    ORDER BY 'Total Sales' DESC
+    LIMIT 1
+    ;
 
