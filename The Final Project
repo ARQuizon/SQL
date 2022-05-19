@@ -56,5 +56,22 @@ SELECT COUNT(invoiceid)
     WHERE invoicedate LIKE '%2009%'
     ;
 
-##9. 
+##9. What are the total sales for 2009?
+SELECT SUM(inv.total)
+    FROM chinook.invoices inv
+    WHERE inv.invoicedate LIKE '%2009%'
+    ;
+
+##10. Write a query that includes the purchased track name with each invoice line item.
+SELECT tracks.name, invi.InvoiceLineId
+    FROM chinook.tracks
+    JOIN chinook.invoice_items invi
+        ON tracks.trackid = invi.trackid
+    ;
+
+
+##11. 
+
+
+
 
