@@ -78,7 +78,17 @@ SELECT t.name AS 'Track Name', t.Composer AS 'Artist Name', i.InvoiceLineId
     ;
     
 
-##12. 
+##12. Provide a query that shows all the Tracks, and include the Album name, Media type, and Genre.
+SELECT t.Name AS 'Track Name', a.Title AS 'Album Name', m.Name AS 'Media Type', g.Name AS 'Genre'
+    FROM chinook.tracks t
+    JOIN chinook.albums a
+        ON t.AlbumId = a.AlbumId
+    JOIN chinook.media_types m
+        ON t.mediatypeid = m.mediatypeid
+    JOIN chinook.genres g
+        ON t.genreid = g.genreid
+    ;
 
+##13. 
 
 
