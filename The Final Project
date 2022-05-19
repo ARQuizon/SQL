@@ -50,4 +50,11 @@ SELECT emp.FirstName, emp.LastName, cust.FirstName, cust.LastName, inv.BillingCo
         ON cust.customerid = inv.customerid
     ;
 
-##8. 
+##8. How many Invoices were there in 2009?
+SELECT COUNT(invoiceid)
+    FROM chinook.invoices
+    WHERE invoicedate LIKE '%2009%'
+    ;
+
+##9. 
+
