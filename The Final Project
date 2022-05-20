@@ -113,5 +113,42 @@ SELECT e.FirstName, e.LastName, ROUND(SUM(i.Total),2) AS 'Total Sales'
     GROUP BY e.FirstName
     ORDER BY ROUND(SUM(i.Total),2) DESC
     LIMIT 1
+    ;0
+   
+##15. Show the total sales made by each artist.
+SELECT t.Composer AS 'Artist', ROUND(SUM(i.total),2) AS 'Total Sales'
+    FROM chinook.invoices i
+    JOIN chinook.invoice_items ii
+        ON i.InvoiceId = ii.InvoiceId
+    JOIN chinook.tracks t
+        ON ii.trackid = t.trackid
+    GROUP BY t.composer
+    ORDER BY ROUND(SUM(i.total),2) DESC
     ;
+
+#16. Show the top 10 tracks along with the artist name with the most sales in the year 2010. 
+SELECT t.Composer AS 'Artist Name', t.Name AS 'Track Name', ROUND(SUM(i.total),2) AS 'Total Sales'
+    FROM chinook.invoices i
+    JOIN chinook.invoice_items ii
+        ON i.invoiceid = ii.invoiceid
+    JOIN chinook.tracks t
+        ON ii.trackid = t.trackid
+    WHERE i.invoicedate LIKE '%2010%'
+    GROUP BY t.name
+    ORDER BY ROUND(SUM(i.total),2) DESC
+    LIMIT 10
+    ;
+    
+##17. Show the top 3 countries that have brought in the most revenue.
+SELECT c.Country, ROUND(SUM(i.total),2) AS 'Total Sales'
+    FROM chinook.customers c
+    JOIN chinook.invoices i
+        ON c.customerid = i.customerid
+    GROUP BY c.country
+    ORDER BY ROUND(SUM(i.total),2) DESC
+    LIMIT 3
+    ;
+
+
+
 
