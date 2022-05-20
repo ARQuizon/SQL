@@ -126,7 +126,7 @@ SELECT t.Composer AS 'Artist', ROUND(SUM(i.total),2) AS 'Total Sales'
     ORDER BY ROUND(SUM(i.total),2) DESC
     ;
 
-#16. Show the top 10 tracks along with the artist name with the most sales in the year 2010. 
+#16. Show the top 10 trending tracks along with the artist name with the most sales in the year 2010. 
 SELECT t.Composer AS 'Artist Name', t.Name AS 'Track Name', ROUND(SUM(i.total),2) AS 'Total Sales'
     FROM chinook.invoices i
     JOIN chinook.invoice_items ii
