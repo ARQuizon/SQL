@@ -5,20 +5,34 @@ CREATE TABLE home_furniture (
     id INTEGER PRIMARY KEY,
     item TEXT,
     color TEXT,
-    quantity INTEGER,
+    quantity_available INTEGER,
+    quantity_sold INTEGER,
     price INTEGER
     );
 
 #Insert values for your store.
 INSERT INTO home_furniture VALUES
-    (1, "couch", "pink", 4, 200),
-    (2, "coffee table", "gold", 7, 50),
-    (3, "dining table", "white", 5, 50),
-    (4, "dining chairs", "pink", 20, 30),
-    (5, "bed frame", "white", 4, 75),
-    (6, "light fixture", "gold", 5, 60),
-    (7, "love seat", "pink", 7, 50);
+    (1, "couch", "pink", 4, 5, 200),
+    (2, "coffee table", "gold", 7, 14, 50),
+    (3, "dining table", "white", 5, 3, 50),
+    (4, "dining chairs", "pink", 20, 17, 30),
+    (5, "bed frame", "white", 4, 6, 75),
+    (6, "light fixture", "gold", 5, 5, 60),
+    (7, "love seat", "pink", 7, 22, 50),
+    (8, "night stand", "white", 10, 15, 50),
+    (9, "desk", "white", 5, 1, 100),
+    (10, "clothing rack", "gold", 5, 5, 30),
+    (11, "book shelf", "gold", 10, 6, 45),
+    (12, "office chair", "white", 7, 2, 55),
+    (13, "drawer set", "white", 15, 11, 200),
+    (14, "potted plant", "green", 30, 15, 15),
+    (15, "vanity mirror", "gold", 9, 20, 60)
+    ;
     
+#Show the table you created for your store.
+SELECT * FROM home_furniture
+    ;
+
 #Order all the products offered in your store from highest to lowest price.
 SELECT * FROM home_furniture
     ORDER BY price DESC
@@ -29,3 +43,10 @@ SELECT item, price FROM home_furniture
     WHERE price <= 50
     ORDER BY price DESC
     ;
+
+#Show all producte, quantity sold, and gross profit per product. Order the list of products in descending order by their number of quantity sold.
+SELECT item, quantity_sold, ROUND(quantity_sold*price,2) AS gross_profit
+    FROM home_furniture
+    ORDER BY quantity_sold DESC
+    ;
+    
