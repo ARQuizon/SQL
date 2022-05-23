@@ -44,7 +44,7 @@ SELECT item, price FROM home_furniture
     ORDER BY price DESC
     ;
 
-#Show all producte, quantity sold, and gross profit per product. Order the list of products in descending order by their number of quantity sold.
+#Show all products, the quantity sold, and gross profit for each product. Order the list of products in descending order by their number of quantity sold.
 SELECT item, quantity_sold, ROUND(quantity_sold*price,2) AS gross_profit
     FROM home_furniture
     ORDER BY quantity_sold DESC
