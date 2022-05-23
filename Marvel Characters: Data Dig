@@ -1,3 +1,6 @@
+# In this SQL code, I used a Marvel characters dataset to use advanced SELECT queries to discover things about the data. 
+
+#Creating the table:
 CREATE TABLE marvels (ID INTEGER PRIMARY KEY,
     name TEXT,
     popularity INTEGER,
@@ -14,6 +17,7 @@ CREATE TABLE marvels (ID INTEGER PRIMARY KEY,
     fighting_Skills INTEGER)
     ;
     
+#Then I inserted the data into the table.
 INSERT INTO marvels VALUES(1, "Spider Man", 1, "Good", "Male", 1.78, 75.75, "USA", 4, 4, 3, 3, 1, 4); 
 INSERT INTO marvels VALUES(2, "Iron Man", 20, "Neutral", "Male", 1.98, 102.58, "USA", 6, 6, 5, 6, 6, 4); 
 INSERT INTO marvels VALUES(3, "Hulk", 18, "Neutral", "Male", 2.44, 635.29, "USA", 1, 7, 3, 7, 5, 4); 
@@ -41,23 +45,31 @@ INSERT INTO marvels VALUES(24, "Venon", 78, "Neutral", "Male", 1.90, 118, "EUA",
 INSERT INTO marvels VALUES(25, "Juggernaut", 76, "Neutral", "Male", 2.87, 862, "EUA", 2, 7, 2, 7, 1, 4);
 INSERT INTO marvels VALUES(26, "Professor X", 58, "Good", "Male", 1.83, 86, "EUA", 5, 2, 2, 2, 5, 3);
 
+#Next, I explored the data using the following SQL. 
+
+#Select all to see what the whole table looks like.
 SELECT * FROM marvels
     ;
 
+#For all male Marvel characters, show the average height, weight, intelligence, strength, speed, durability, energy projections, and fighting skills.
 SELECT AVG(height_m), AVG(weight_kg), AVG(intelligence), AVG(strength), AVG(speed), AVG(durability), AVG(energy_projection), AVG(fighting_skills) FROM marvels
     WHERE gender = "Male"
     ;
 
+#For all female Marvel characters, show the average height, weight, intelligence, strength, speed, durability, energy projection, and fighting skills.
 SELECT AVG(height_m), AVG(weight_kg), AVG(intelligence), AVG(strength), AVG(speed), AVG(durability), AVG(energy_projection), AVG(fighting_skills) FROM marvels
     WHERE gender = "Female"
     ;
 
+#List all the Marvel characters whos alignment is neutral or good. The queried table should show their ame, popularity, alignment, and gender.
 SELECT name, popularity, alignment, gender FROM marvels
     WHERE alignment IN ("Neutral", "Good");
 
+#List all the Marvel characters that are from the USA, Canada, Germany, Kenya, or the EUA. Include their name, gender, and hometown.
 SELECT name, gender, hometown FROM marvels
     WHERE hometown IN ("USA", "Canada", "Germany", "Kenya", "EUA");
     
+#Create a column that shows the weight category of each Marvel character. If their weight is less than 75 kg, then they are light, If their weight is less than 150 kg, then they are moderately light. If their weight is less than 225 kg, then they are moderately heavy. Anything over 225 kg is heavy.
 SELECT name, gender, weight_kg,
     CASE
         WHEN weight_kg < 75 THEN "light"
@@ -68,6 +80,7 @@ SELECT name, gender, weight_kg,
     FROM marvels 
     ; 
 
+#Show how many characters are in each weight category.
 SELECT COUNT(*),
     CASE
         WHEN weight_kg < 75 THEN "light"
@@ -79,6 +92,7 @@ SELECT COUNT(*),
     GROUP BY weight_category
     ;
     
+#Show the female Marvel characters whose intelligence and durability is higher than 3. Include their name, popularity, and fighting skills.
 SELECT name, popularity, fighting_skills FROM marvels
     WHERE gender = "Female"
     AND intelligence > 3
