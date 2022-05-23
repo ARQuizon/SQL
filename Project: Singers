@@ -106,14 +106,12 @@ SELECT * FROM artist_genre_origin;
 #Next, I explored the data using the following SQL.
 
 
-/**JOINing related tables: come up with a query that shows the artist name next to their hit song **/
-
+#JOINing related tables: come up with a query that shows the artist name next to their hit song.
 SELECT a.artist, hs.hit_song FROM artists AS a
     JOIN hit_songs AS hs
     ON a.id = hs.artist_id;
 
-/**Combining multiple JOINs: come up with a query that shows the artist name next to their genre and origin id **/
-
+#Combining multiple JOINs: come up with a query that shows the artist name next to their genre and origin id.
 SELECT a.artist, g.genre, o.country FROM artist_genre_origin AS ago
     JOIN artists AS a
     ON ago.artist_id = a.id
@@ -123,8 +121,7 @@ SELECT a.artist, g.genre, o.country FROM artist_genre_origin AS ago
     ON ago.origin_id = o.id
     ;
 
-/**JOINing tables to themselves with self-joins: come up with a query that shows the artist name next to the name of the artist they are assigned to collaborate music with **/
-
+#JOINing tables to themselves with self-joins: come up with a query that shows the artist name next to the name of the artist they are assigned to collaborate music with.
 SELECT artists.artist AS artist_name, collab.artist AS collab_partner FROM artists
     JOIN artists collab
     ON artists.collaboration_id = collab.id
