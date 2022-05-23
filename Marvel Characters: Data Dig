@@ -61,7 +61,7 @@ SELECT AVG(height_m), AVG(weight_kg), AVG(intelligence), AVG(strength), AVG(spee
     WHERE gender = "Female"
     ;
 
-#List all the Marvel characters whos alignment is neutral or good. The queried table should show their ame, popularity, alignment, and gender.
+#List all the Marvel characters whose alignment is neutral or good. The queried table should show their name, popularity, alignment, and gender.
 SELECT name, popularity, alignment, gender FROM marvels
     WHERE alignment IN ("Neutral", "Good");
 
