@@ -1,9 +1,13 @@
+# In this SQL code, I created my own table with some small set of “famous people”, then make more tables about things they do and join those to create nice human readable lists.
+
+#Creating a table listing artists:
 CREATE TABLE artists (
     id INTEGER PRIMARY KEY,
     artist TEXT,
     collaboration_id INTEGER)
     ;
 
+#Inserting values into the artists table:
 INSERT INTO artists VALUES
     (1, "BTS", 2),
     (2, "Blackpink", 1),
@@ -13,15 +17,19 @@ INSERT INTO artists VALUES
     (6, "Doja Cat", 7),
     (7, "SZA", 6),
     (8, "Bruno Mars", 5)
-    ;
-    
-SELECT * FROM artists;
+    ; 
 
+#Select all to see what the whole table looks like.
+SELECT * FROM artists
+    ;
+
+#Creating a table listing genres:
 CREATE TABLE genre (
     id INTEGER PRIMARY KEY,
     genre TEXT)
     ;
 
+#Inserting values into the genre table:
 INSERT INTO genre VALUES 
     (1, "kpop"),
     (2, "pop"),
@@ -29,14 +37,17 @@ INSERT INTO genre VALUES
     (4, "R&B")
     ;
 
+#Select all to see what the whole table looks like.
 SELECT * FROM genre;
 
+#Creating a table listing hit songs:
 CREATE TABLE hit_songs (
     id INTEGER PRIMARY KEY,
     artist_id INTEGER,
     hit_song TEXT)
     ;
 
+#Inserting values into the hit songs table:
 INSERT INTO hit_songs VALUES
     (1, 2, "Kill This Love"),
     (2, 1, "Butter"),
@@ -48,19 +59,27 @@ INSERT INTO hit_songs VALUES
     (8, 7, "Leave The Door Open")
     ;
 
+#Select all to see what the whole table looks like.
 SELECT * FROM hit_songs;
 
+#Creating a table listing what country the artists' are from:
 CREATE TABLE origin (
     id INTEGER PRIMARY KEY,
     country TEXT)
     ;
 
+#Inserting values into the country origin table:
 INSERT INTO origin VALUES 
     (1, "South Korea"),
     (2, "USA"),
     (3, "Canada")
     ;
-    
+
+#Select all to see what the whole table looks like.
+SELECT * FROM origin
+    ;
+
+#Creating a table that relates all artists with their genre and country origins:
 CREATE TABLE artist_genre_origin
     (id INTEGER PRIMARY KEY,
     artist_id INTEGER,
@@ -68,6 +87,7 @@ CREATE TABLE artist_genre_origin
     origin_id INTEGER)
     ;
 
+#Inserting values into the table:
 INSERT INTO artist_genre_origin VALUES
     (1, 1, 1, 1),
     (2, 2,  1, 1),
@@ -79,10 +99,12 @@ INSERT INTO artist_genre_origin VALUES
     (8, 8, 4, 2)
     ;
 
+#Select all to see what the whole table looks like.
 SELECT * FROM artist_genre_origin;
 
 
-SELECT * FROM origin;
+#Next, I explored the data using the following SQL.
+
 
 /**JOINing related tables: come up with a query that shows the artist name next to their hit song **/
 
