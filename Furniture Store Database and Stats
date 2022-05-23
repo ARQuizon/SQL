@@ -1,3 +1,6 @@
+# In this SQL code, I created my own home furniture store and querying a data to answer questions regarding pricing.
+
+#Create a table for your store.
 CREATE TABLE home_furniture (
     id INTEGER PRIMARY KEY,
     item TEXT,
@@ -6,6 +9,7 @@ CREATE TABLE home_furniture (
     price INTEGER
     );
 
+#Insert values for your store.
 INSERT INTO home_furniture VALUES
     (1, "couch", "pink", 4, 200),
     (2, "coffee table", "gold", 7, 50),
@@ -15,11 +19,13 @@ INSERT INTO home_furniture VALUES
     (6, "light fixture", "gold", 5, 60),
     (7, "love seat", "pink", 7, 50);
     
+#Order all the products offered in your store from highest to lowest price.
 SELECT * FROM home_furniture
-    ORDER BY price
+    ORDER BY price DESC
     ;
     
+#Show all the products offered under $50 in descending order by price.
 SELECT item, price FROM home_furniture
     WHERE price <= 50
-    ORDER BY price
+    ORDER BY price DESC
     ;
