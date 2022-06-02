@@ -1,4 +1,5 @@
-# In this SQL code, I created my own table with a small set of “famous people”, then made more tables about things they do and joined those to create nice human readable lists.
+# In this SQL code, I created my own table with a small set of singers and more tables relating to different characteristics for each artist. 
+# I joined related tables, combined multiple joins, and joined tables with themselves using self joins to create nice human readable lists.
 
 #Creating a table listing artists:
 CREATE TABLE artists (
