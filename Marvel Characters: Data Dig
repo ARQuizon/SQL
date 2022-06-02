@@ -1,4 +1,4 @@
-# In this SQL code, I used a Marvel characters dataset to use advanced SELECT queries to discover things about the data. 
+# In this SQL code, I used a Marvel characters dataset to use advanced SELECT queries to discover unique insights about the character data. 
 
 #Creating the table:
 CREATE TABLE marvels (ID INTEGER PRIMARY KEY,
